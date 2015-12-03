@@ -1,0 +1,1 @@
+C:\Users\carlo\documents\visual studio 2015\Projects\CMOV_P2_Stock_Exchange\CMOV_P2_Stock_Exchange\CMOV_P2_Stock_Exchange.csproj;x64

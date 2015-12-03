@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="CMOV_P2_Stock_Exchange.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CMOV_P2_Stock_Exchange"
+    RequestedTheme="Light">
+
+</Application>
