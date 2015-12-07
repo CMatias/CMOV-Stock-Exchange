@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMOV_P2_Stock_Exchange
 {
-    class User
+    public class User
     {
         private string app_id;
         List<Stock> mystocks;

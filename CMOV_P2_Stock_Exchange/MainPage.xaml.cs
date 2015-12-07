@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Security.Authentication.OnlineId;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
@@ -22,27 +24,29 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CMOV_P2_Stock_Exchange
 {
-
-
-
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public bool forceStartScreen = true;
 
-
-        public string CURRENTDIR = Directory.GetCurrentDirectory();
         public List<string> stockListID = new List<string>();
         public List<string> stockListName = new List<string>();
 
+        Windows.Storage.ApplicationDataContainer mySettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         public MainPage()
         {
             this.InitializeComponent();
 
-            LoadStockList();
+            if ( !forceStartScreen && ((string)mySettings.Values["stocks"]) != null)
+            {
+                List<Stock> stocks = Stock.toList(((string)ApplicationData.Current.LocalSettings.Values["stocks"]));
+                Window.Current.Content = new Portfolio(new User(stocks));
+            }
 
+            LoadStockList();
         }
 
 
@@ -91,19 +95,29 @@ namespace CMOV_P2_Stock_Exchange
 
         private void bFinish_Click(object sender, RoutedEventArgs e)
         {
-            string s = "";
+            string str = "";
             List<Stock> defaultStocks = new List<Stock>();
 
             foreach (UIElement ctrl in checkboxPanel.Children)
             {
                 if (ctrl.GetType() == typeof(CheckBox))
                 {
-                    CheckBox potentialButton = ((CheckBox)ctrl);
-                    if (potentialButton.IsChecked == true)
-                        defaultStocks.Add(new Stock((string) potentialButton.Content));
+                    CheckBox cb = ((CheckBox)ctrl);
+                    if (cb.IsChecked == true)
+                    {
+                        Stock newStock = new Stock((string) cb.Content);
+                        defaultStocks.Add(newStock);
+                        str += "ticket:" + newStock.getTicket() + ",name:" + newStock.getName() + ",h:0,l:0/";
+                    }
                 }
             }
-               
+
+            str = str.Remove(str.Length - 1, 1);
+
+            Debug.WriteLine(str);
+
+            mySettings.Values["stocks"] = str;
+
             Frame.Navigate(typeof (Portfolio),new User(defaultStocks));
         }
 

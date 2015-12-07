@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CMOV_P2_Stock_Exchange
 {
@@ -15,7 +16,15 @@ namespace CMOV_P2_Stock_Exchange
             name = n;
         }
 
-        
+        public Stock(string t, string n, float h, float l)
+        {
+            ticket = t;
+            name = n;
+            high = h;
+            low = l;
+        }
+
+
         public Stock(string full)
         {
             // example : Alphabet Inc. (GOOG)
@@ -79,6 +88,38 @@ namespace CMOV_P2_Stock_Exchange
             active = b;
         }
 
+        public static List<Stock> toList(string s)
+        {
+            List<Stock> aux = new List<Stock>();
+            string[] array = s.Split('/');
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                string t, n, h, l;
+
+                Debug.WriteLine(array[i]);
+
+                t = array[i].Substring(array[i].IndexOf("ticket:") + 7);
+                t = t.Remove(t.IndexOf(",name:"));
+
+                n = array[i].Substring(array[i].IndexOf(",name:") + 6);
+                n = n.Remove(n.IndexOf(",h:"));
+
+                h = array[i].Substring(array[i].IndexOf(",h:") + 3);
+                h = h.Remove(h.IndexOf(",l:"));
+
+                l = array[i].Substring(array[i].IndexOf(",l:") + 3, array[i].Length - (array[i].IndexOf(",l:") + 3));
+
+                Debug.WriteLine(t);
+                Debug.WriteLine(n);
+                Debug.WriteLine(h);
+                Debug.WriteLine(l);
+                aux.Add(new Stock(t, n, float.Parse(h), float.Parse(l)));
+
+            }
+            return aux;
+
+        }
     }
 
 

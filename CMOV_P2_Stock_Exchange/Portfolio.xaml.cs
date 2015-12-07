@@ -31,6 +31,22 @@ namespace CMOV_P2_Stock_Exchange
             this.InitializeComponent();
         }
 
+        public Portfolio(User u)
+        {
+            this.InitializeComponent();
+
+            user = u;
+
+            Thickness margin;
+            margin.Top = 0;
+
+            foreach (Stock s in user.getStockList())
+            {
+                stocksPanel.Children.Add(new TextBlock { Text = s.display(), Foreground = new SolidColorBrush(Colors.White), Margin = margin });
+                margin.Top += 20;
+            }
+        }
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -42,7 +58,7 @@ namespace CMOV_P2_Stock_Exchange
                 stocksPanel.Children.Add(new TextBlock {Text = s.display(), Foreground = new SolidColorBrush(Colors.White), Margin = margin });
                 margin.Top += 20;
             }
-            ;
+
             //Debug.WriteLine(user.getStockList()[0].display());
         }
     }

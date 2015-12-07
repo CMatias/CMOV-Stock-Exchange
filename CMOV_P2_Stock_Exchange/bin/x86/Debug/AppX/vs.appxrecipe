@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-07T11:52:20.549</Modified>
+      <Modified>2015-12-07T14:38:41.689</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\CMOV_P2_Stock_Exchange.exe">
       <PackagePath>entrypoint\CMOV_P2_Stock_Exchange.exe</PackagePath>
-      <Modified>2015-12-07T11:52:20.251</Modified>
+      <Modified>2015-12-07T14:38:41.074</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -448,37 +448,37 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:33:09.231</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:33:28.027</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:34:34.992</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:33:48.586</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:34:13.535</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:35:00.929</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-05T14:50:07.128</Modified>
+      <Modified>2015-12-07T14:32:43.758</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\CMOV_P2_Stock_Exchange.xr.xml">
       <PackagePath>CMOV_P2_Stock_Exchange.xr.xml</PackagePath>
@@ -490,11 +490,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-07T11:50:39.239</Modified>
+      <Modified>2015-12-07T14:38:41.505</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\Core\CMOV_P2_Stock_Exchange.exe">
       <PackagePath>CMOV_P2_Stock_Exchange.exe</PackagePath>
-      <Modified>2015-12-07T11:52:20.546</Modified>
+      <Modified>2015-12-07T14:38:41.687</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
