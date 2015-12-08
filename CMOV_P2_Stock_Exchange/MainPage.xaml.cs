@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SharedPush;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -33,6 +34,8 @@ namespace CMOV_P2_Stock_Exchange
 
         public List<string> stockListID = new List<string>();
         public List<string> stockListName = new List<string>();
+
+        private SetupPush pushChannel;
 
         Windows.Storage.ApplicationDataContainer mySettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
@@ -74,6 +77,9 @@ namespace CMOV_P2_Stock_Exchange
         private async void bAdd_Click(object sender, RoutedEventArgs e)
         {
             string txt = tbAdd.Text;
+
+            pushChannel = new SetupPush();
+            pushChannel.Initialize();
 
             if (stockListID.Contains(txt))
             {

@@ -6,7 +6,7 @@ namespace CMOV_P2_Stock_Exchange
     public class Stock
     {
         private string ticket, name;
-        private float high, low;
+        private float high, low, current;
         private bool active;
 
 
@@ -66,6 +66,16 @@ namespace CMOV_P2_Stock_Exchange
         public float getLow()
         {
             return low;
+        }
+
+        public float getCurrent()
+        {
+            return current;
+        }
+
+        public void setCurrent(float c)
+        {
+            current = c;
         }
 
         public void setHigh(float h)

@@ -735,3 +735,7 @@ C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\obj\x86\Debug\Portfoli
 C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\obj\x86\Debug\Portfolio.g.cs
 C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\obj\x86\Debug\Portfolio.xaml
 C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\obj\x86\Debug\Portfolio.xbf
+C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\SharedPush.dll
+C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\SharedPush.pdb
+C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\SharedPush.pri
+C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\obj\x86\Debug\CMOV_P2_Stock_Exchange.csproj.GenerateResource.Cache

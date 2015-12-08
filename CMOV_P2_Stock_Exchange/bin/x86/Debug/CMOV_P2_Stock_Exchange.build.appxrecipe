@@ -330,6 +330,9 @@
     <AppxPackagedFile Include="C:\Users\goncalobo\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.dll">
+      <PackagePath>SharedPush.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>

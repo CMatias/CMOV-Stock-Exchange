@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-07T14:38:41.689</Modified>
+      <Modified>2015-12-08T14:46:45.932</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\CMOV_P2_Stock_Exchange.exe">
       <PackagePath>entrypoint\CMOV_P2_Stock_Exchange.exe</PackagePath>
-      <Modified>2015-12-07T14:38:41.074</Modified>
+      <Modified>2015-12-08T14:46:43.565</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -442,6 +442,10 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-12-02T16:39:32.599</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.dll">
+      <PackagePath>SharedPush.dll</PackagePath>
+      <Modified>2015-12-08T12:12:03.009</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2015-12-05T14:50:07.159</Modified>
@@ -482,7 +486,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\CMOV_P2_Stock_Exchange.xr.xml">
       <PackagePath>CMOV_P2_Stock_Exchange.xr.xml</PackagePath>
-      <Modified>2015-12-07T11:37:48.185</Modified>
+      <Modified>2015-12-08T14:46:43.157</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -490,11 +494,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-07T14:38:41.505</Modified>
+      <Modified>2015-12-08T14:46:45.574</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\Core\CMOV_P2_Stock_Exchange.exe">
       <PackagePath>CMOV_P2_Stock_Exchange.exe</PackagePath>
-      <Modified>2015-12-07T14:38:41.687</Modified>
+      <Modified>2015-12-08T14:46:45.927</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

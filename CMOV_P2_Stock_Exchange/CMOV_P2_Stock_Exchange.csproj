@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RequestState.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Portfolio.xaml.cs">
       <DependentUpon>Portfolio.xaml</DependentUpon>
@@ -135,6 +136,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedPush\SharedPush.csproj">
+      <Project>{fb7894a6-72b7-43ba-be01-fb79a95dca7b}</Project>
+      <Name>SharedPush</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

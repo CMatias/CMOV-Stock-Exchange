@@ -1,1 +1,2 @@
 C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\CMOV_P2_Stock_Exchange.csproj;x86
+C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\SharedPush.csproj;x86

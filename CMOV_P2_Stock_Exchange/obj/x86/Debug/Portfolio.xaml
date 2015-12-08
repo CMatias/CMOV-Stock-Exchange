@@ -24,17 +24,17 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid>
-            <Rectangle Fill="#FF007BD0"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="#FF007BD0" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
+        <RelativePanel Margin="0,0,0,0" VerticalAlignment="Top" MaxHeight="43">
+            <Rectangle Fill="#FF007BD0" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="#FF007BD0" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
+            <TextBlock Text="Stock Manager" Margin="8,8,-7,17" Height="23" Foreground="White" HorizontalAlignment="Left"/>
+        </RelativePanel>
+        <RelativePanel Margin="0,50,0,0" VerticalAlignment="Top" Width="200" Height="353">
+            <WebView x:ConnectionId='3' x:Name="wvChart" RelativePanel.AlignTopWithPanel="True" Width="200" RelativePanel.AlignHorizontalCenterWithPanel="True"  MaxHeight="300" />
+        </RelativePanel>
 
-            <RelativePanel x:ConnectionId='3' x:Name="contentPanel" Margin="10,-12,10,0">
-                <TextBlock Text="Stock Manager" Margin="0,23,-7,17" Height="23" Foreground="White" HorizontalAlignment="Left"/>
-                <RelativePanel x:ConnectionId='4' x:Name="stocksPanel" Margin="0,80,0,0">
-                    
-                </RelativePanel>
+                
+            
 
-            </RelativePanel>
-        </Grid>
 
 
 
