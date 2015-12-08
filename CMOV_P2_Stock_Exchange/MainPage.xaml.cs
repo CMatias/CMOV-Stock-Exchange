@@ -46,6 +46,13 @@ namespace CMOV_P2_Stock_Exchange
             if ( !forceStartScreen && ((string)mySettings.Values["stocks"]) != null)
             {
                 List<Stock> stocks = Stock.toList(((string)ApplicationData.Current.LocalSettings.Values["stocks"]));
+
+                User u = new User(stocks);
+
+                pushChannel = new SetupPush();
+                pushChannel.Initialize();
+                u.setAppUri(pushChannel.getUri());
+
                 Window.Current.Content = new Portfolio(new User(stocks));
             }
 
@@ -78,8 +85,7 @@ namespace CMOV_P2_Stock_Exchange
         {
             string txt = tbAdd.Text;
 
-            pushChannel = new SetupPush();
-            pushChannel.Initialize();
+
 
             if (stockListID.Contains(txt))
             {
@@ -120,11 +126,15 @@ namespace CMOV_P2_Stock_Exchange
 
             str = str.Remove(str.Length - 1, 1);
 
-            Debug.WriteLine(str);
-
             mySettings.Values["stocks"] = str;
 
-            Frame.Navigate(typeof (Portfolio),new User(defaultStocks));
+            User u = new User(defaultStocks);
+
+            pushChannel = new SetupPush();
+            pushChannel.Initialize();
+            u.setAppUri(pushChannel.getUri());
+
+            Frame.Navigate(typeof (Portfolio), u);
         }
 
         private async void enterHandler(object sender, KeyRoutedEventArgs e)

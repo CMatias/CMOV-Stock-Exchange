@@ -104,7 +104,10 @@ namespace CMOV_P2_Stock_Exchange
             read.Dispose();
 
             Thickness margin;
-            margin.Top = 0;
+            margin.Top = 20;
+            margin.Bottom = 20;
+            margin.Left = 20;
+            margin.Right = 20;
 
             string[] a = tmpString.Split('\n');
             int pos = 0;
@@ -115,17 +118,19 @@ namespace CMOV_P2_Stock_Exchange
                 int startValuePos = a[pos].IndexOf("\",") + 2;
 
                 s.setCurrent(float.Parse(a[pos].Substring(startValuePos,valueLength)));
+                StackPanel sPanel = new StackPanel { Margin = margin, Width = 100 , Height = 100 };
+                sPanel.Children.Add(new TextBlock { Margin= new Thickness( 10,25,10,0 ), Foreground = new SolidColorBrush(Colors.White), FontSize = 12, Text = s.getTicket()});
+                sPanel.Children.Add(new TextBlock { Margin = new Thickness(10, 25, 10, 0), Foreground = new SolidColorBrush(Colors.White), FontSize = 20, Text = s.getCurrent().ToString() });
 
-                //stocksPanel.Children.Add(new TextBlock { Text = s.getCurrent().ToString(), Foreground = new SolidColorBrush(Colors.White), Margin = margin });
+                Grid.SetRow(sPanel, 1);
+                Grid.SetColumn(sPanel, 1);
 
-
-
-                margin.Top += 20;
+                stocksPanel.Children.Add(sPanel);
 
                 pos++;
             }
 
-            wvChart.Source = new Uri("http://chart.finance.yahoo.com/z?s=GOOG&t=1m&q=l&z=m");
+            wvChart.NavigateToString("<style>div{text-align: center;}img{max-width:90vw;height:90vh}body{overflow:hidden}</style><div><img src='http://chart.finance.yahoo.com/z?s=GOOG&t=1m&q=l&z=l'></div>");
 
             response.Dispose();
         }

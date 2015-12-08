@@ -8,7 +8,7 @@ namespace CMOV_P2_Stock_Exchange
 {
     public class User
     {
-        private string app_id;
+        private string app_uri;
         List<Stock> mystocks;
 
         public User(List<Stock> s)
@@ -48,5 +48,14 @@ namespace CMOV_P2_Stock_Exchange
         }
 
 
+        public string getAppUri()
+        {
+            return app_uri;
+        }
+
+        public void setAppUri(string uri)
+        {
+            app_uri = uri;
+        }
     }
 }

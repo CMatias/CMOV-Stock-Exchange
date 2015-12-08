@@ -11,13 +11,17 @@ namespace SharedPush
     public class SetupPush
     {
         private PushNotificationChannel pushChannel;
-
+        public string uri;
         public async void Initialize()
         {
             pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-            Debug.WriteLine(pushChannel.Uri.ToString());
-            Debugger.Break();
+            uri = pushChannel.Uri.ToString();
+        }
+
+        public string getUri()
+        {
+            return uri;
         }
     }
 }
