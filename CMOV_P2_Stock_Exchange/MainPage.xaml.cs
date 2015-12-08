@@ -30,7 +30,7 @@ namespace CMOV_P2_Stock_Exchange
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public bool forceStartScreen = true;
+        public bool forceStartScreen = false;
 
         public List<string> stockListID = new List<string>();
         public List<string> stockListName = new List<string>();
@@ -49,11 +49,14 @@ namespace CMOV_P2_Stock_Exchange
 
                 User u = new User(stocks);
 
+
                 pushChannel = new SetupPush();
                 pushChannel.Initialize();
                 u.setAppUri(pushChannel.getUri());
 
-                Window.Current.Content = new Portfolio(new User(stocks));
+                Debug.WriteLine(u.getStockList()[0].getTicket());
+
+                Window.Current.Content = new Portfolio(u);
             }
 
             LoadStockList();

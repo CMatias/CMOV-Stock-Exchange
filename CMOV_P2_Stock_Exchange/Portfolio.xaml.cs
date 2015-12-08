@@ -33,26 +33,24 @@ namespace CMOV_P2_Stock_Exchange
         public Portfolio()
         {
             this.InitializeComponent();
-
         }
 
         public Portfolio(User u)
         {
             this.InitializeComponent();
 
-            user = u;   
+            user = u;
 
-            Thickness margin;
-            margin.Top = 0;
+            string url = "http://finance.yahoo.com/d/quotes?f=sl1d1t1v&s=";
 
             foreach (Stock s in user.getStockList())
             {
-
-                Debug.WriteLine("Making request for Stock");
-                
-                //stocksPanel.Children.Add(new TextBlock { Text = s.display(), Foreground = new SolidColorBrush(Colors.White), Margin = margin });
-                margin.Top += 20;
+                url += s.getTicket() + ",";
+                Debug.WriteLine(s.getTicket());
             }
+
+            updateStocks(url);
+
         }
 
 
@@ -74,6 +72,11 @@ namespace CMOV_P2_Stock_Exchange
         }
 
 
+
+        private void stockPress(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         public async void updateStocks(string url)
         {
@@ -98,16 +101,10 @@ namespace CMOV_P2_Stock_Exchange
                 sb.Append(tmpString);
             } while (count > 0);
 
-            Debug.WriteLine(tmpString);
-
 
             read.Dispose();
 
-            Thickness margin;
-            margin.Top = 20;
-            margin.Bottom = 20;
-            margin.Left = 20;
-            margin.Right = 20;
+     
 
             string[] a = tmpString.Split('\n');
             int pos = 0;
@@ -118,21 +115,49 @@ namespace CMOV_P2_Stock_Exchange
                 int startValuePos = a[pos].IndexOf("\",") + 2;
 
                 s.setCurrent(float.Parse(a[pos].Substring(startValuePos,valueLength)));
-                StackPanel sPanel = new StackPanel { Margin = margin, Width = 100 , Height = 100 };
-                sPanel.Children.Add(new TextBlock { Margin= new Thickness( 10,25,10,0 ), Foreground = new SolidColorBrush(Colors.White), FontSize = 12, Text = s.getTicket()});
-                sPanel.Children.Add(new TextBlock { Margin = new Thickness(10, 25, 10, 0), Foreground = new SolidColorBrush(Colors.White), FontSize = 20, Text = s.getCurrent().ToString() });
 
-                Grid.SetRow(sPanel, 1);
-                Grid.SetColumn(sPanel, 1);
+                StackPanel sPanel;
 
+                if(s.isActive())
+                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.ForestGreen)};
+                else
+                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.SteelBlue)};
+                sPanel.Tapped += SPanel_Tapped;
+                sPanel.Children.Add(new TextBlock { Margin= new Thickness( 10,25,10,0 ), Foreground = new SolidColorBrush(Colors.White),FontSize = 12, Text = s.getTicket()});
+                sPanel.Children.Add(new TextBlock { Margin = new Thickness(10, 0, 10, 0), Foreground = new SolidColorBrush(Colors.White), FontSize = 20, Text = s.getCurrent().ToString() });
+
+                
+
+                Grid.SetRow(sPanel, int.Parse((pos / 3).ToString()));
+                Grid.SetColumn(sPanel, int.Parse(( pos % 3).ToString()));
+                
+             
                 stocksPanel.Children.Add(sPanel);
 
                 pos++;
             }
 
-            wvChart.NavigateToString("<style>div{text-align: center;}img{max-width:90vw;height:90vh}body{overflow:hidden}</style><div><img src='http://chart.finance.yahoo.com/z?s=GOOG&t=1m&q=l&z=l'></div>");
+            changeChart(user.getActiveStock().getTicket());
 
             response.Dispose();
         }
+
+        private void SPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            StackPanel sp = (StackPanel) sender;
+            TextBlock tb = (TextBlock) sp.Children[0];
+
+            Debug.WriteLine(tb.Text);
+
+            changeChart(tb.Text);
+        }
+
+        public void changeChart(string ticket)
+        {
+            wvChart.NavigateToString("<style>div{text-align: center;}img{max-width:90vw;height:90vh}body{overflow:hidden}</style><div><img src='http://chart.finance.yahoo.com/z?s="+ticket+"&t=1m&q=l&z=l'></div>");
+        }
+
     }
+
+  
 }

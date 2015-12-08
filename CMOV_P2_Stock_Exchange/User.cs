@@ -14,14 +14,31 @@ namespace CMOV_P2_Stock_Exchange
         public User(List<Stock> s)
         {
             mystocks = s;
+
+            Stock lastStock = mystocks[0];
+
+            if (getActiveStock() == null) {
+                foreach (Stock st in mystocks)
+                    if(lastStock.getCurrent() < st.getCurrent())
+                        lastStock = st;
+                }
+
+            foreach (Stock st in mystocks)
+                if (st.getTicket().Equals(lastStock.getTicket()))
+                    st.setActive(true);
+
+
         }
 
         public Stock getActiveStock()
         {
+
             foreach (Stock s in mystocks)
                 if (s.isActive())
                     return s;
+                
             return null;
+
         }
 
         public void addStock(Stock s)

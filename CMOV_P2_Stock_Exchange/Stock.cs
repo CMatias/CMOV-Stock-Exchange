@@ -107,7 +107,7 @@ namespace CMOV_P2_Stock_Exchange
             {
                 string t, n, h, l;
 
-                Debug.WriteLine(array[i]);
+                //Debug.WriteLine(array[i]);
 
                 t = array[i].Substring(array[i].IndexOf("ticket:") + 7);
                 t = t.Remove(t.IndexOf(",name:"));
@@ -120,10 +120,10 @@ namespace CMOV_P2_Stock_Exchange
 
                 l = array[i].Substring(array[i].IndexOf(",l:") + 3, array[i].Length - (array[i].IndexOf(",l:") + 3));
 
-                Debug.WriteLine(t);
-                Debug.WriteLine(n);
-                Debug.WriteLine(h);
-                Debug.WriteLine(l);
+                //Debug.WriteLine(t);
+                //Debug.WriteLine(n);
+                //Debug.WriteLine(h);
+                //Debug.WriteLine(l);
                 aux.Add(new Stock(t, n, float.Parse(h), float.Parse(l)));
 
             }

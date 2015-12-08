@@ -36,26 +36,73 @@
             <Button x:ConnectionId='8' Content="Portfolio Settings" Height="32"  RelativePanel.AlignRightWithPanel="True" VerticalAlignment="Top" RelativePanel.AlignBottomWithPanel="True"  x:Name="qs"  MinWidth="100"  Background="#FF007BD0" Foreground="White" Margin="0,0,0,-64" />
         </RelativePanel>
         <RelativePanel Margin="8,340,8,0">
-            <Grid x:ConnectionId='3' x:Name="stocksPanel"  Grid.Row="1"   >
+            <ScrollViewer MinHeight="300" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled" AllowDrop="False"  HorizontalScrollMode="Disabled"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" >
+
+
+                <Grid x:ConnectionId='3' x:Name="stocksPanel"  Grid.Row="1" RelativePanel.AlignLeftWithPanel="True"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-              
-                <!--StackPanel  Margin="5" Background="#FF242427" Grid.Column="2" Grid.Row="1" Width="100" Height="100" >
-                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12">First TextBlock</TextBlock>
-                    <TextBlock  Margin="10,0,10,0" Text="700" Foreground="#FFFFFF" FontSize="20">Second TextBlock</TextBlock>
-                </-->
+                <!--StackPanel   Margin="8" Background="#FF242427" Grid.Column="0" Grid.Row="0" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="1" Grid.Row="0" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="2" Grid.Row="0" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="0" Grid.Row="1" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="1" Grid.Row="1" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="2" Grid.Row="1" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="0" Grid.Row="2" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="1" Grid.Row="2" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel  Margin="8" Background="#FF242427" Grid.Column="2" Grid.Row="2" Width="100" Height="100" >
+                    <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
+                    <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
+                </StackPanel-->
 
             </Grid>
-            
-          
+            </ScrollViewer>
+
+
+
         </RelativePanel>
 
 
