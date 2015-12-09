@@ -1,7 +1,6 @@
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.dll
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.pdb
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.pri
-C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\obj\x86\Debug\SharedPush.csprojResolveAssemblyReference.cache
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\obj\x86\Debug\SharedPush.dll
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\obj\x86\Debug\SharedPush.pdb
 C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\obj\x86\Debug\priconfig.xml

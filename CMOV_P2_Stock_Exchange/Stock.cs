@@ -7,7 +7,7 @@ namespace CMOV_P2_Stock_Exchange
     {
         private string ticket, name;
         private float high, low, current;
-        private bool active;
+        private bool active, displaying;
 
 
         public Stock(string t, string n)
@@ -16,31 +16,29 @@ namespace CMOV_P2_Stock_Exchange
             name = n;
         }
 
-        public Stock(string t, string n, float h, float l)
+        public Stock(string t, string n, float h, float l, bool a)
         {
             ticket = t;
             name = n;
             high = h;
             low = l;
+            active = a;
         }
 
 
         public Stock(string full)
         {
-            // example : Alphabet Inc. (GOOG)
 
             int nameLen = 0, ticketLen = 0;
 
-            //Debug.WriteLine("Full:" + full);
-
             nameLen = full.IndexOf("(")-1;
-            //Debug.WriteLine("nameLen:" + nameLen + " // " + full.Length + " // " + full.IndexOf("("));
-
             ticketLen = full.Length - nameLen - 3;
-            //Debug.WriteLine("ticketLen:" + ticketLen);
 
             name = full.Substring(0, nameLen);
             ticket = full.Substring(full.IndexOf("(") + 1, ticketLen);
+            high = 1;
+            low = 0;
+            active = false;
         }
 
         public string getTicket()
@@ -88,6 +86,16 @@ namespace CMOV_P2_Stock_Exchange
             low = l;
         }
 
+        public bool isDisplaying()
+        {
+            return displaying;
+        }
+
+        public void setDisplaying(bool d)
+        {
+            displaying = d;
+        }
+
         public bool isActive()
         {
             return active;
@@ -105,9 +113,9 @@ namespace CMOV_P2_Stock_Exchange
 
             for (int i = 0; i < array.Length; i++)
             {
-                string t, n, h, l;
+                string t, n, h, l, a;
 
-                //Debug.WriteLine(array[i]);
+                Debug.WriteLine(array[0]);
 
                 t = array[i].Substring(array[i].IndexOf("ticket:") + 7);
                 t = t.Remove(t.IndexOf(",name:"));
@@ -118,19 +126,25 @@ namespace CMOV_P2_Stock_Exchange
                 h = array[i].Substring(array[i].IndexOf(",h:") + 3);
                 h = h.Remove(h.IndexOf(",l:"));
 
-                l = array[i].Substring(array[i].IndexOf(",l:") + 3, array[i].Length - (array[i].IndexOf(",l:") + 3));
+                l = array[i].Substring(array[i].IndexOf(",l:") + 3);
+                l = l.Remove(l.IndexOf(",active:"));
 
-                //Debug.WriteLine(t);
-                //Debug.WriteLine(n);
-                //Debug.WriteLine(h);
-                //Debug.WriteLine(l);
-                aux.Add(new Stock(t, n, float.Parse(h), float.Parse(l)));
+                a = array[i].Substring(array[i].IndexOf(",active:") + 8, array[i].Length - (array[i].IndexOf(",active:") + 8));
+
+                
+
+                aux.Add(new Stock(t, n, float.Parse(h), float.Parse(l), bool.Parse(a)));
 
             }
             return aux;
-
         }
+
+        public string saveMode()
+        {
+            return "ticket:" + ticket + ",name:" + name + ",h:" + high.ToString() + ",l:" + low.ToString() + ",active:" +
+                   active.ToString() + "/";
+        }
+
+
     }
-
-
 }

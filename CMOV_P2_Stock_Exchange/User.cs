@@ -15,17 +15,9 @@ namespace CMOV_P2_Stock_Exchange
         {
             mystocks = s;
 
-            Stock lastStock = mystocks[0];
 
-            if (getActiveStock() == null) {
-                foreach (Stock st in mystocks)
-                    if(lastStock.getCurrent() < st.getCurrent())
-                        lastStock = st;
-                }
-
-            foreach (Stock st in mystocks)
-                if (st.getTicket().Equals(lastStock.getTicket()))
-                    st.setActive(true);
+            if (getActiveStock() == null)
+                mystocks[0].setActive(true);
 
 
         }
@@ -73,6 +65,25 @@ namespace CMOV_P2_Stock_Exchange
         public void setAppUri(string uri)
         {
             app_uri = uri;
+        }
+
+        public void setActiveStockByTicket(string t)
+        {
+            foreach(Stock s in mystocks)
+                if (s.getTicket() == t)
+                    s.setActive(true);
+                else s.setActive(false);
+        }
+
+        public Stock getDisplayingStock()
+        {
+
+            foreach (Stock s in mystocks)
+                if (s.isDisplaying())
+                    return s;
+
+            return null;
+
         }
     }
 }

@@ -25,7 +25,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid>
-            <Rectangle Fill="#FF007BD0"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="#FF007BD0" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
+            <Rectangle Fill="SteelBlue"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="SteelBlue" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
 
             <RelativePanel x:Name="contentPanel" Margin="10,-12,10,0">
                 <TextBlock Text="Welcome to the Stock Manager" Margin="0,23,-7,17" Height="23" Foreground="White" HorizontalAlignment="Left"/>
@@ -35,8 +35,10 @@
                     <Run Text=" > Please check which stocks you want to monitor." FontSize="10.667"/>
                     <LineBreak/>
                     <Run Text=" > If a stock is not listed use the form below to add it." FontSize="10.667"/>
-                    
+
                 </TextBlock>
+                <Image x:Name="image" Width="23" HorizontalAlignment="Left" Canvas.ZIndex="50" VerticalAlignment="Top" Height="57" Source="Assets/phone.png" Margin="290,66,-213,-23"/>
+
                 <StackPanel x:Name="checkboxPanel" Margin="0,131,-339,45">
                     <CheckBox Content="IBM (IBM)" Foreground="White"/>
                     <CheckBox Content="Microsoft (MSFT)" Foreground="White"/>
@@ -47,9 +49,9 @@
                     <CheckBox Content="Apple (AAPL)" Foreground="White"/>
                     <CheckBox Content="Oracle (ORCL)" Foreground="White"/>
                 </StackPanel>
-                <TextBox Height="36" Margin="0,0,0,-10"  x:Name="tbAdd"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWith="checkboxPanel" MinWidth="100" Text="" PlaceholderText="Enter stock name to add..." KeyDown="enterHandler" />
+                <TextBox Height="36" Margin="0,0,0,-10"  x:Name="tbAdd"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWith="checkboxPanel" MinWidth="100" Text="" PlaceholderText="Enter stock name to add..." KeyDown="enterHandler" Background="#FFCCCCCC" />
                 <Button Content="Add" Height="36" RelativePanel.AlignLeftWithPanel="True"  RelativePanel.AlignRightWithPanel="True"   RelativePanel.AlignBottomWith="checkboxPanel"  x:Name="bAdd"  MinWidth="100" Click="bAdd_Click" Background="#FF008637" Foreground="White" Margin="0,0,0,-64" />
-                <Button Content="Finish" Height="36" RelativePanel.AlignBottomWith="tbAdd"  RelativePanel.AlignRightWithPanel="True"    x:Name="qs"  MinWidth="100" Click="bFinish_Click" Background="#FF007BD0" Foreground="White" Margin="0,0,0,-64" />
+                <Button Content="Finish" Height="36" RelativePanel.AlignBottomWith="tbAdd"  RelativePanel.AlignRightWithPanel="True"    x:Name="qs"  MinWidth="100" Click="bFinish_Click" Background="SteelBlue" Foreground="White" Margin="0,0,0,-64" />
 
 
 

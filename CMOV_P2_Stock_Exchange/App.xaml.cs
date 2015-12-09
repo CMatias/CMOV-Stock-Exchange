@@ -99,9 +99,10 @@ namespace CMOV_P2_Stock_Exchange
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
+            await Portfolio.saveData();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }

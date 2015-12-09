@@ -30,25 +30,27 @@ namespace CMOV_P2_Stock_Exchange
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public bool forceStartScreen = false;
+        public bool forceStartScreen = true;
 
-        public List<string> stockListID = new List<string>();
-        public List<string> stockListName = new List<string>();
+        public List<string> stockListID ;
+        public List<string> stockListName;
 
         private SetupPush pushChannel;
 
-        Windows.Storage.ApplicationDataContainer mySettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        public Windows.Storage.ApplicationDataContainer mySettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         public MainPage()
         {
             this.InitializeComponent();
+
+            stockListID = new List<string>();
+            stockListName = new List<string>();
 
             if ( !forceStartScreen && ((string)mySettings.Values["stocks"]) != null)
             {
                 List<Stock> stocks = Stock.toList(((string)ApplicationData.Current.LocalSettings.Values["stocks"]));
 
                 User u = new User(stocks);
-
 
                 pushChannel = new SetupPush();
                 pushChannel.Initialize();
@@ -113,6 +115,8 @@ namespace CMOV_P2_Stock_Exchange
             string str = "";
             List<Stock> defaultStocks = new List<Stock>();
 
+            bool noOptionsSelected = true;
+
             foreach (UIElement ctrl in checkboxPanel.Children)
             {
                 if (ctrl.GetType() == typeof(CheckBox))
@@ -120,12 +124,15 @@ namespace CMOV_P2_Stock_Exchange
                     CheckBox cb = ((CheckBox)ctrl);
                     if (cb.IsChecked == true)
                     {
+                        noOptionsSelected = false;
                         Stock newStock = new Stock((string) cb.Content);
                         defaultStocks.Add(newStock);
-                        str += "ticket:" + newStock.getTicket() + ",name:" + newStock.getName() + ",h:0,l:0/";
+                        str += "ticket:" + newStock.getTicket() + ",name:" + newStock.getName() + ",h:123,l:0,active:false/";
                     }
                 }
             }
+
+            if (noOptionsSelected) return;
 
             str = str.Remove(str.Length - 1, 1);
 

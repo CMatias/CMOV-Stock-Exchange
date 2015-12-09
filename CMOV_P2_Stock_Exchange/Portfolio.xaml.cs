@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,7 +29,8 @@ namespace CMOV_P2_Stock_Exchange
     /// </summary>
     public sealed partial class Portfolio : Page
     {
-        private User user;
+        private static User user;
+        public static Windows.Storage.ApplicationDataContainer mySettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         public Portfolio()
         {
@@ -54,7 +56,7 @@ namespace CMOV_P2_Stock_Exchange
         }
 
 
-
+        
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -101,16 +103,16 @@ namespace CMOV_P2_Stock_Exchange
                 sb.Append(tmpString);
             } while (count > 0);
 
-
-            read.Dispose();
-
-     
+            read.Dispose();   
 
             string[] a = tmpString.Split('\n');
             int pos = 0;
 
             foreach (Stock s in user.getStockList())
             {
+                bLow.Content = "[↓] " + s.getLow();
+                bHigh.Content = s.getHigh() + " [↑]";
+
                 int valueLength = a[pos].IndexOf(",\"") - a[pos].IndexOf("\",") - 2;
                 int startValuePos = a[pos].IndexOf("\",") + 2;
 
@@ -119,10 +121,12 @@ namespace CMOV_P2_Stock_Exchange
                 StackPanel sPanel;
 
                 if(s.isActive())
-                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.ForestGreen)};
+                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.SteelBlue) };
                 else
-                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.SteelBlue)};
-                sPanel.Tapped += SPanel_Tapped;
+                    sPanel = new StackPanel { Margin = new Thickness(8, 8, 8, 8), Width = 100 , Height = 100 , Background = new SolidColorBrush(Colors.DarkCyan) };
+                sPanel.Tapped += stockClick;
+                sPanel.Holding += stockHold;
+                sPanel.RightTapped += stockRightClick;
                 sPanel.Children.Add(new TextBlock { Margin= new Thickness( 10,25,10,0 ), Foreground = new SolidColorBrush(Colors.White),FontSize = 12, Text = s.getTicket()});
                 sPanel.Children.Add(new TextBlock { Margin = new Thickness(10, 0, 10, 0), Foreground = new SolidColorBrush(Colors.White), FontSize = 20, Text = s.getCurrent().ToString() });
 
@@ -142,20 +146,147 @@ namespace CMOV_P2_Stock_Exchange
             response.Dispose();
         }
 
-        private void SPanel_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            StackPanel sp = (StackPanel) sender;
-            TextBlock tb = (TextBlock) sp.Children[0];
 
-            Debug.WriteLine(tb.Text);
+        private void stockClick(object sender, TappedRoutedEventArgs e)
+        {
+            StackPanel sp = (StackPanel)sender;
+            TextBlock tb = (TextBlock)sp.Children[0];
 
             changeChart(tb.Text);
+
+            bLow.Content = "[↓] " + user.getStockByTicket(tb.Text).getLow();
+            bHigh.Content = user.getStockByTicket(tb.Text).getHigh() + " [↑]";
+
+    }
+
+
+        private void stockRightClick(object sender, RightTappedRoutedEventArgs e)
+        {
+            foreach (UIElement sp in stocksPanel.Children)
+            {
+                if(sp is StackPanel)
+                    if ((sp as StackPanel).Background.ToString() == new SolidColorBrush(Colors.SteelBlue).ToString())
+                        (sp as StackPanel).Background = new SolidColorBrush(Colors.DarkCyan);
+            }
+
+            (sender as StackPanel).Background = new SolidColorBrush(Colors.SteelBlue);
+
+            TextBlock tb = (TextBlock)(sender as StackPanel).Children[0];
+
+            user.setActiveStockByTicket(tb.Text);
+            stockClick(sender, new TappedRoutedEventArgs());
+
+        }
+
+
+
+        private void stockHold(object sender, HoldingRoutedEventArgs e)
+        {
+            foreach (UIElement sp in stocksPanel.Children)
+            {
+                if (sp is StackPanel)
+                    if ((sp as StackPanel).Background.ToString() == new SolidColorBrush(Colors.SteelBlue).ToString())
+                        (sp as StackPanel).Background = new SolidColorBrush(Colors.DarkCyan);
+            }
+
+            (sender as StackPanel).Background = new SolidColorBrush(Colors.SteelBlue);
+
+            TextBlock tb = (TextBlock) (sender as StackPanel).Children[0];
+
+            user.setActiveStockByTicket(tb.Text);
+            stockClick(sender, new TappedRoutedEventArgs());
+
         }
 
         public void changeChart(string ticket)
         {
-            wvChart.NavigateToString("<style>div{text-align: center;}img{max-width:90vw;height:90vh}body{overflow:hidden}</style><div><img src='http://chart.finance.yahoo.com/z?s="+ticket+"&t=1m&q=l&z=l'></div>");
+            foreach (Stock s in user.getStockList())
+                if (s.getTicket() == ticket)
+                    s.setDisplaying(true);
+                else s.setDisplaying(false);
+
+            wvChart.NavigateToString("<style>div{text-align: center;}img{max-width:90vw;height:90vh}body{overflow:hidden}</style><div><img src='http://chart.finance.yahoo.com/z?s=" + ticket + "&t=1m&q=l&z=l'></div>");
         }
+
+        public static Task saveData()
+        {
+            string str = "";
+            foreach (Stock s in user.getStockList())
+                str += s.saveMode();
+
+            str = str.Remove(str.Length - 1, 1);
+
+            mySettings.Values["stocks"] =  str;
+            Debug.WriteLine(str);
+
+
+            return Task.Run(() =>
+            {
+                Debug.WriteLine("Settings saved.");
+            });
+           
+
+        }
+
+        private  void bLowClick(object sender, RoutedEventArgs e)
+        {
+            if (user.getDisplayingStock().getHigh()!=0)
+                lowSlider.Maximum = user.getDisplayingStock().getHigh();
+
+            Canvas.SetZIndex(lowSlider, 50);
+
+            bLow.Opacity = 0.5;
+
+        }
+
+        private void spinnerLow(object sender, PointerRoutedEventArgs e)
+        {
+            if (bLow.Opacity < 1)
+            {
+                Canvas.SetZIndex(lowSlider, 0);
+                user.getDisplayingStock().setLow(float.Parse((lowSlider as Slider).Value.ToString()));
+                (bLow as Button).Content = "[↓] " + user.getDisplayingStock().getLow();
+
+                if (user.getDisplayingStock().getLow() >= user.getDisplayingStock().getHigh())
+                {
+                    user.getDisplayingStock().setHigh(user.getDisplayingStock().getLow() + 1);
+                    (bHigh as Button).Content = user.getDisplayingStock().getHigh() + " [↑]";
+                }
+            }
+            bLow.Opacity = 1;
+
+        }
+
+        private void bHighClick(object sender, RoutedEventArgs e)
+        {
+            if (user.getDisplayingStock().getLow() != 0)
+                highSlider.Minimum = user.getDisplayingStock().getLow();
+
+            highSlider.Maximum = user.getDisplayingStock().getCurrent()*1.5;
+
+            Canvas.SetZIndex(highSlider, 50);
+
+            bHigh.Opacity = 0.5;
+
+        }
+
+        private void spinnerHigh(object sender, PointerRoutedEventArgs e)
+        {
+            if (bHigh.Opacity < 1) { 
+            Canvas.SetZIndex(highSlider, 0);
+            user.getDisplayingStock().setHigh(float.Parse((highSlider as Slider).Value.ToString()));
+            (bHigh as Button).Content = user.getDisplayingStock().getHigh() + " [↑]";
+
+            if (user.getDisplayingStock().getHigh() <= user.getDisplayingStock().getLow())
+            {
+                user.getDisplayingStock().setLow(user.getDisplayingStock().getHigh() - 1);
+                (bLow as Button).Content = "[↓] " + user.getDisplayingStock().getLow();
+            }
+            }
+            bHigh.Opacity = 1;
+
+        }
+
 
     }
 

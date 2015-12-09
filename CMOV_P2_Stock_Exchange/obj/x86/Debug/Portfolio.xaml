@@ -25,38 +25,41 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel Margin="0,0,0,0" VerticalAlignment="Top" MaxHeight="43">
-            <Rectangle Fill="#FF007BD0" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="#FF007BD0" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
-            <TextBlock Text="Stock Manager" Margin="8,8,-7,17" Height="23" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="SteelBlue" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="39" MinWidth="100" Stroke="SteelBlue" VerticalAlignment="Top"  Margin="0,0,-9,0"/>
+            <TextBlock Text="Stock Manager" Margin="8,8,-7,15" Height="23" Foreground="White" HorizontalAlignment="Left"/>
         </RelativePanel>
-        <RelativePanel Margin="8,50,8,0" VerticalAlignment="Top"  Height="248">
-            <TextBox x:ConnectionId='4' Text="[+] Add Stock" MaxHeight="25" RelativePanel.AlignLeftWithPanel="True" VerticalAlignment="Top"     x:Name="bAdd"  MinWidth="105" Width="200" Background="#FF008637" Foreground="White" Margin="0,0,0,-64" />
-            <WebView x:ConnectionId='5' x:Name="wvChart" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" Height="200" Margin="0,0,0,-288" />
-            <TextBox x:ConnectionId='6' Text="[↓] Low" MaxHeight="25" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top"     x:Name="bHigh"  MinWidth="100" Width="100" Background="#FF008637" Foreground="White" Margin="0,0,0,-64" />
-            <TextBox x:ConnectionId='7' Text="High [↑]" MaxHeight="25" TextAlignment="Right" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RelativePanel.AlignLeftWith="bHigh"   x:Name="bLow"  MinWidth="100" Width="100" Background="#FF008637" Foreground="White" Margin="105,0,0,-64" />
-            <Button x:ConnectionId='8' Content="Portfolio Settings" Height="32"  RelativePanel.AlignRightWithPanel="True" VerticalAlignment="Top" RelativePanel.AlignBottomWithPanel="True"  x:Name="qs"  MinWidth="100"  Background="#FF007BD0" Foreground="White" Margin="0,0,0,-64" />
+        <RelativePanel x:ConnectionId='3' x:Name="midPannel" Margin="8,50,8,0" VerticalAlignment="Top"  Height="248">
+            <Slider x:ConnectionId='5' RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="bHigh" RelativePanel.AlignHorizontalCenterWith="bSettings" Minimum="0" Maximum="100" Name="lowSlider" Margin="8,-2,-101,-42" Canvas.ZIndex="-1"                            />
+            <Slider x:ConnectionId='6' RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith="bHigh" RelativePanel.AlignHorizontalCenterWith="bSettings" Minimum="0" Maximum="100" Name="highSlider" Margin="119,-2,-212,-42" Canvas.ZIndex="-1"                            />
+            <TextBox x:ConnectionId='7' Text="" MaxHeight="25" RelativePanel.AlignLeftWithPanel="True" VerticalAlignment="Top"     x:Name="bAdd"  MinWidth="110" Width="222" Background="#FFCCCCCC" Foreground="White" Margin="0,0,0,-64" PlaceholderText="[+] Add Stock" />
+            <WebView x:ConnectionId='8' x:Name="wvChart" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" Height="200" Margin="0,0,0,-288" />
+            <Button x:ConnectionId='9' Content="[↓] " HorizontalContentAlignment="Left" MaxHeight="32" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top"     x:Name="bLow"  MinWidth="110" Width="110" Background="#FF862500" Foreground="White" Margin="0,0,0,-64"                   />
+            <Button x:ConnectionId='10' Content=" [↑]" HorizontalContentAlignment="Right" MaxHeight="32"  RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RelativePanel.AlignLeftWith="bLow"   x:Name="bHigh"  MinWidth="110" Width="110" Background="#FF008637" Foreground="White" Margin="111,0,0,-64"                    />
+            <Button x:ConnectionId='11' Content="Settings" Height="32"  RelativePanel.AlignRightWithPanel="True" VerticalAlignment="Top" RelativePanel.AlignBottomWithPanel="True"  x:Name="bSettings"  MinWidth="101"  Background="SteelBlue" Foreground="White" Margin="0,0,0,-64" />
+            <Rectangle Fill="#33000000" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="33" MinWidth="100"  VerticalAlignment="Bottom" Canvas.ZIndex="-1"  Margin="-8,0,-9,-33"/>
         </RelativePanel>
-        <RelativePanel Margin="8,340,8,0">
+        <RelativePanel Margin="0,340,0,0">
             <ScrollViewer MinHeight="300" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled" AllowDrop="False"  HorizontalScrollMode="Disabled"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" >
 
 
-                <Grid x:ConnectionId='3' x:Name="stocksPanel"  Grid.Row="1" RelativePanel.AlignLeftWithPanel="True"  >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />                    
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!--StackPanel   Margin="8" Background="#FF242427" Grid.Column="0" Grid.Row="0" Width="100" Height="100" >
+                <Grid x:ConnectionId='4' x:Name="stocksPanel"  Grid.Row="1" RelativePanel.AlignLeftWithPanel="True"  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--StackPanel   Margin="8" Background="#FF242427" Grid.Column="0" Grid.Row="0" Width="100" Height="100" Holding="stockHold" >
                     <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
                     <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
-                </StackPanel>
+                </>
 
                 <StackPanel  Margin="8" Background="#FF242427" Grid.Column="1" Grid.Row="0" Width="100" Height="100" >
                     <TextBlock  Margin="10,25,10,0" Text="GOOG" Foreground="#FFFFFF" FontSize="12"/>
@@ -98,7 +101,7 @@
                     <TextBlock  Margin="10,0,10,0"  Text="700" Foreground="#FFFFFF" FontSize="20"/>
                 </StackPanel-->
 
-            </Grid>
+                </Grid>
             </ScrollViewer>
 
 

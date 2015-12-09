@@ -333,8 +333,8 @@
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\SharedPush\bin\x86\Debug\SharedPush.dll">
       <PackagePath>SharedPush.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\phone.png">
+      <PackagePath>Assets\phone.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -362,6 +362,9 @@
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\goncalobo\Git\cmov-p2-wup\CMOV_P2_Stock_Exchange\bin\x86\Debug\CMOV_P2_Stock_Exchange.xr.xml">
       <PackagePath>CMOV_P2_Stock_Exchange.xr.xml</PackagePath>
